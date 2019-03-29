@@ -1,9 +1,14 @@
-﻿# CMakeList.txt : CMake project for Graf2019HF01, include source and define
-# project specific logic here.
-#
-cmake_minimum_required (VERSION 3.8)
+﻿cmake_minimum_required(VERSION 3.5)
+project(grafhazi)
 
-# Add source to this project's executable.
-add_executable (Graf2019HF01 "Graf2019HF01.cpp" "Graf2019HF01.h")
+set(SOURCE_FILES Skeleton.cpp framework.cpp framework.h)
+set(CMAKE_CXX_STANDARD 11)
 
-# TODO: Add tests and install targets if needed.
+find_package(OpenGL REQUIRED)
+find_package(GLUT REQUIRED)
+find_package(GLEW REQUIRED)
+include_directories(${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS})
+
+link_libraries(${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ${GLEW_LIBRARIES})
+
+add_executable(grafhazi ${SOURCE_FILES})
